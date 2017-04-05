@@ -1,7 +1,5 @@
 package Executable;
-import javax.swing.JFrame;
 
-import Clock.Clock;
 import JFrame.ClockFrame;
 
 public class ScienceBowlClock {
