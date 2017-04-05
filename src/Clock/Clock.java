@@ -1,6 +1,7 @@
 package Clock;
-
 import javax.swing.Timer;
+
+import Executable.ScienceBowlClock;
 
 public class Clock {
 	public static Timer timer = new Timer(1000, new CountdownPerformer());
@@ -10,6 +11,12 @@ public class Clock {
 	private static ClockCase mode = ClockCase.OVERALL;
 	public Clock(){
 		mode = ClockCase.OVERALL;
+	}
+	public static void updateGUI(){
+		ScienceBowlClock.GUI.updateTimes(overallTime, tossUpTime, bonusTime);
+	}
+	public static void setMode(ClockCase mod){
+		mode = mod;
 	}
 	public static void startCountdown(){
 		timer.start();
@@ -44,6 +51,12 @@ public class Clock {
 	public static void resetClock(){
 		overallTime[0] = overallTimeStart;
 		tossUpTime = tossUpTimeStart;
+		bonusTime = bonusTimeStart;
+	}
+	public static void resetTossUp(){
+		tossUpTime = tossUpTimeStart;
+	}
+	public static void resetBonus(){
 		bonusTime = bonusTimeStart;
 	}
 	public static void incrementTime(int secs, ClockCase mod){
