@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
@@ -13,10 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ClockFrame extends JFrame{
-	private JPanel clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel;
+	private JPanel overallPanel,clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel, buttonPanel;
 	private JButton startTimer, stopTimer, startTossUpTimer, stopTossUpTimer, startBonusTimer, stopBonusTimer;
+	private ButtonListener buttonListener;
 	private JLabel overallTime, tossUpTime, bonusTime;
-	private GroupLayout clockGrid;
+	private GroupLayout overallGrid, clockGrid;
+	String overallTimes, tossUpTimes, bonusTimes;
+	GridBagConstraints c;
 	public ClockFrame() {
 		//Sets up the frame
 		setTitle("Science Bowl Clock");
@@ -29,19 +33,22 @@ public class ClockFrame extends JFrame{
 		clockPanel = new JPanel();
 		//Creates the time labels
 		overallTime = new JLabel();
-		overallTime.setText("00:00");
+		overallTimes = "15:00";
+		overallTime.setText(overallTimes);
 		overallTimePanel = new JPanel();
 		overallTimePanel.setLayout(new GridBagLayout());
 		overallTimePanel.add(overallTime);
 		overallTimePanel.setBackground(new Color(0,50,50));
 		tossUpTime = new JLabel();
-		tossUpTime.setText("00");
+		tossUpTimes = "08";
+		tossUpTime.setText(tossUpTimes);
 		tossUpTimePanel = new JPanel();
 		tossUpTimePanel.setLayout(new GridBagLayout());
 		tossUpTimePanel.add(tossUpTime);
 		tossUpTimePanel.setBackground(new Color(0,100,123));
 		bonusTime = new JLabel();
-		bonusTime.setText("00");
+		bonusTimes = "20";
+		bonusTime.setText(bonusTimes);
 		bonusTimePanel = new JPanel();
 		bonusTimePanel.setLayout(new GridBagLayout());
 		bonusTimePanel.add(bonusTime);
@@ -72,6 +79,7 @@ public class ClockFrame extends JFrame{
 								.addComponent(bonusTimePanel) ) 
 				)	
 		);
+		buttonPanel = new JPanel();
 		//Adds Buttons
 		startTimer = new JButton("Start Timer");
 		stopTimer = new JButton("Pause Timer");
@@ -79,7 +87,44 @@ public class ClockFrame extends JFrame{
 		stopTossUpTimer = new JButton("Stop Toss Up");
 		startBonusTimer = new JButton("Start Bonus");
 		stopBonusTimer = new JButton("Stop Bonus");
-		//Add the panel
-		add(clockPanel);
+		buttonPanel.add(startTimer);
+		buttonPanel.add(stopTimer);
+		buttonPanel.add(startTossUpTimer);
+		buttonPanel.add(stopTossUpTimer);
+		buttonPanel.add(startBonusTimer);
+		buttonPanel.add(stopBonusTimer);
+		//Button Listeners
+		buttonListener = new ButtonListener();
+		startTimer.addActionListener(buttonListener);
+		stopTimer.addActionListener(buttonListener);
+		startTossUpTimer.addActionListener(buttonListener);
+		stopTossUpTimer.addActionListener(buttonListener);
+		startBonusTimer.addActionListener(buttonListener);
+		stopBonusTimer.addActionListener(buttonListener);
+		//The overall interface panel
+		overallPanel = new JPanel(new GridBagLayout());
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.BOTH;
+		c.weighty = 0.6;
+		c.gridx = 0;
+		c.gridy = 0;
+		overallPanel.add(clockPanel, c);
+		c.weighty = 0.4;
+		c.gridy = 1;
+		overallPanel.add(buttonPanel, c);
+		add(overallPanel);
+	}
+	public void updateTimes(int[] timeO, int timeT, int timeB){
+		int minute, second, tossUp, bonus;
+		minute = timeO[0];
+		second = timeO[1];
+		tossUp = timeT;
+		bonus = timeB;
+		overallTimes = String.format("%02d:%02d", minute,second);
+		tossUpTimes = String.format("%02d", tossUp);
+		bonusTimes = String.format("%02d", bonus);
+		overallTime.setText(overallTimes);
+		tossUpTime.setText(tossUpTimes);
+		bonusTime.setText(bonusTimes);
 	}
 }

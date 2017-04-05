@@ -20,6 +20,7 @@ public class CountdownPerformer implements ActionListener{
 			Clock.decreaseBonus();
 			break;
 		}
+		Clock.updateGUI();
 	}
 	
 }
