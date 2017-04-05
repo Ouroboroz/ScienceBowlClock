@@ -19,10 +19,16 @@ public class ClockFrame extends JFrame{
 		//Creates the time labels
 		JLabel overallTime = new JLabel();
 		overallTime.setText("00:00");
+		JPanel overallTimePanel = new JPanel();
+		overallTimePanel.add(overallTime);
 		JLabel tossUpTime = new JLabel();
 		tossUpTime.setText("00");
+		JPanel tossUpTimePanel = new JPanel();
+		tossUpTimePanel.add(tossUpTime);
 		JLabel bonusTime = new JLabel();
 		bonusTime.setText("00");
+		JPanel bonusTimePanel = new JPanel();
+		bonusTimePanel.add(bonusTime);
 		//The grid that holds the times 
 		GroupLayout buttonGrid = new GroupLayout(clockPanel);
 		clockPanel.setLayout(buttonGrid);
@@ -30,18 +36,18 @@ public class ClockFrame extends JFrame{
 		//Adds a group within the grid
 		//Sets up the horizontal layout
 		buttonGrid.setHorizontalGroup(buttonGrid.createSequentialGroup()
-					.addComponent(overallTime)
+					.addComponent(overallTimePanel)
 					.addGroup(buttonGrid.createParallelGroup(GroupLayout.Alignment.CENTER)
-							.addComponent(tossUpTime)
-							.addComponent(bonusTime) )
+							.addComponent(tossUpTimePanel)
+							.addComponent(bonusTimePanel) )
 		);
 		//Sets up the vertical layout
 		buttonGrid.setVerticalGroup(buttonGrid.createSequentialGroup()
 				.addGroup(buttonGrid.createParallelGroup(GroupLayout.Alignment.CENTER)
-						.addComponent(overallTime)
+						.addComponent(overallTimePanel)
 						.addGroup(buttonGrid.createSequentialGroup()
-								.addComponent(tossUpTime)
-								.addComponent(bonusTime) ) 
+								.addComponent(tossUpTimePanel)
+								.addComponent(bonusTimePanel) ) 
 				)	
 		);
 		//Add the panel
