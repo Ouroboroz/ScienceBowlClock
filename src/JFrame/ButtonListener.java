@@ -18,14 +18,22 @@ public class ButtonListener implements ActionListener {
 				Clock.stopCountdown();
 		else if(source.equals("Start Toss Up"))
 				Clock.setMode(ClockCase.TOSSUP);
-		else if(source.equals("Stop Toss Up")){
+		else if(source.equals("Reset Toss Up")){
 				Clock.setMode(ClockCase.OVERALL);
 				Clock.resetTossUp();}
 		else if(source.equals("Start Bonus"))
 				Clock.setMode(ClockCase.BONUS);
-		else if(source.equals("Stop Bonus")){
+		else if(source.equals("Reset Bonus")){
 				Clock.setMode(ClockCase.OVERALL);
 				Clock.resetBonus();}
+		else if(source.equals("Reset Timer")){
+				Clock.resetClock();
+				Clock.updateGUI();
+		}
+		else if(source.equals("Add More Time"))
+				new AddTimeFrame().setVisible(true);
+		else if(source.equals("Subtract Time"))
+				new SubtractTimeFrame().setVisible(true);
 		
 	}
 

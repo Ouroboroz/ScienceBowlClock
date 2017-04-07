@@ -50,6 +50,7 @@ public class Clock {
 	}
 	public static void resetClock(){
 		overallTime[0] = overallTimeStart;
+		overallTime[1] = 0;
 		tossUpTime = tossUpTimeStart;
 		bonusTime = bonusTimeStart;
 	}
@@ -63,25 +64,18 @@ public class Clock {
 		int totSecs = overallTime[0]*60+overallTime[1];
 		switch(mod){
 			case OVERALL:
-				if(secs < totSecs){
 					totSecs += secs;
 					overallTime[0] = totSecs/60;
 					overallTime[1] = totSecs%60;
-				}
 				break;
 			case TOSSUP:
-				if(secs < tossUpTime){
 					tossUpTime += secs;
-				}
 				break;
 			case BONUS:
-				if(secs < bonusTime){
 					bonusTime += secs;
-				}
 				break;
 		}
 	}
-	
 	//Getters
 	public static int[] getOverallTime(){
 		return overallTime;

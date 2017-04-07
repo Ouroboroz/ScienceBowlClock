@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ClockFrame extends JFrame{
-	private JPanel overallPanel,clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel, buttonPanel;
-	private JButton startTimer, stopTimer, startTossUpTimer, stopTossUpTimer, startBonusTimer, stopBonusTimer;
+	private JPanel overallPanel,clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel, buttonPanel, auxButtonPanel;
+	private JButton startTimer, stopTimer, startTossUpTimer, stopTossUpTimer, startBonusTimer, stopBonusTimer, resetTimer, addTime, subtractTime, preferences;
 	private ButtonListener buttonListener;
 	private JLabel overallTime, tossUpTime, bonusTime;
 	private GroupLayout overallGrid, clockGrid;
@@ -27,7 +27,7 @@ public class ClockFrame extends JFrame{
 		setSize(800,500);
 		setMaximumSize(new Dimension(800,500));
 		setMinimumSize(new Dimension(800,500));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		//Creates the panel to hold the times
 		clockPanel = new JPanel();
@@ -84,15 +84,24 @@ public class ClockFrame extends JFrame{
 		startTimer = new JButton("Start Timer");
 		stopTimer = new JButton("Pause Timer");
 		startTossUpTimer = new JButton("Start Toss Up");
-		stopTossUpTimer = new JButton("Stop Toss Up");
+		stopTossUpTimer = new JButton("Reset Toss Up");
 		startBonusTimer = new JButton("Start Bonus");
-		stopBonusTimer = new JButton("Stop Bonus");
+		stopBonusTimer = new JButton("Reset Bonus");
 		buttonPanel.add(startTimer);
 		buttonPanel.add(stopTimer);
 		buttonPanel.add(startTossUpTimer);
 		buttonPanel.add(stopTossUpTimer);
 		buttonPanel.add(startBonusTimer);
 		buttonPanel.add(stopBonusTimer);
+		//Second Layer of buttons
+		auxButtonPanel = new JPanel();
+		resetTimer = new JButton("Reset Timer");
+		addTime = new JButton("Add More Time");
+		subtractTime = new JButton("Subtract Time");
+		//Add secondary buttons to panel
+		auxButtonPanel.add(resetTimer);
+		auxButtonPanel.add(addTime);
+		auxButtonPanel.add(subtractTime);
 		//Button Listeners
 		buttonListener = new ButtonListener();
 		startTimer.addActionListener(buttonListener);
@@ -101,6 +110,10 @@ public class ClockFrame extends JFrame{
 		stopTossUpTimer.addActionListener(buttonListener);
 		startBonusTimer.addActionListener(buttonListener);
 		stopBonusTimer.addActionListener(buttonListener);
+		//Second Layer Button Listener
+		resetTimer.addActionListener(buttonListener);
+		addTime.addActionListener(buttonListener);
+		subtractTime.addActionListener(buttonListener);
 		//The overall interface panel
 		overallPanel = new JPanel(new GridBagLayout());
 		c = new GridBagConstraints();
@@ -111,7 +124,11 @@ public class ClockFrame extends JFrame{
 		overallPanel.add(clockPanel, c);
 		c.weighty = 0.4;
 		c.gridy = 1;
+		buttonPanel.setLayout(new GridBagLayout());
 		overallPanel.add(buttonPanel, c);
+		c.weighty = 0.2;
+		c.gridy = 2;
+		overallPanel.add(auxButtonPanel,c);
 		add(overallPanel);
 	}
 	public void updateTimes(int[] timeO, int timeT, int timeB){
