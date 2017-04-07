@@ -38,21 +38,21 @@ public class ClockFrame extends JFrame{
 		overallTimePanel = new JPanel();
 		overallTimePanel.setLayout(new GridBagLayout());
 		overallTimePanel.add(overallTime);
-		overallTimePanel.setBackground(new Color(0,50,50));
+		overallTimePanel.setBackground(new Color(255,255,0));
 		tossUpTime = new JLabel();
 		tossUpTimes = "08";
 		tossUpTime.setText(tossUpTimes);
 		tossUpTimePanel = new JPanel();
 		tossUpTimePanel.setLayout(new GridBagLayout());
 		tossUpTimePanel.add(tossUpTime);
-		tossUpTimePanel.setBackground(new Color(0,100,123));
+		tossUpTimePanel.setBackground(new Color(255,0,0));
 		bonusTime = new JLabel();
 		bonusTimes = "20";
 		bonusTime.setText(bonusTimes);
 		bonusTimePanel = new JPanel();
 		bonusTimePanel.setLayout(new GridBagLayout());
 		bonusTimePanel.add(bonusTime);
-		bonusTimePanel.setBackground(new Color(0,123,100));
+		bonusTimePanel.setBackground(new Color(0,0,255));
 		//Sets up the fonts
 		overallTime.setFont(new Font("SansSerif",Font.PLAIN,100));
 		tossUpTime.setFont(new Font("SansSerif",Font.PLAIN,50));
