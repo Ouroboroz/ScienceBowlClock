@@ -1,4 +1,4 @@
-# ScienceBowlClock
+# ScienceBowlClock ![Build Status](https://travis-ci.org/Ouroboroz/ScienceBowlClock.svg?branch=master)
 A countdown timer for Science Bowl.
 
 ### Features:
