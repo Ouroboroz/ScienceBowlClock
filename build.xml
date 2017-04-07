@@ -1,6 +1,6 @@
-<project name="MyProject" default="dist" basedir=".">
+<project name="ScieceBowlClock" default="dist" basedir=".">
   <description>
-    simple example build file
+    Build File for ScienceBowlClock
   </description>
   <!-- set global properties for this build -->
   <property name="src" location="src"/>
