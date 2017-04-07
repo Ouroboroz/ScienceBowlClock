@@ -2,6 +2,7 @@ package Clock;
 import javax.swing.Timer;
 
 import Executable.ScienceBowlClock;
+import Sound.SoundPlayer;
 
 public class Clock {
 	public static Timer timer = new Timer(1000, new CountdownPerformer());
@@ -9,6 +10,7 @@ public class Clock {
 	private static int[] overallTime = {15,0}; //[minute, second]
 	private static int tossUpTime = 8, bonusTime = 20; //8, 20
 	private static ClockCase mode = ClockCase.OVERALL;
+	private static SoundPlayer soundPlayer = new SoundPlayer();
 	public Clock(){
 		mode = ClockCase.OVERALL;
 	}
@@ -32,6 +34,7 @@ public class Clock {
 		if(totSec == 0){
 			stopCountdown();
 			mode = ClockCase.OVERALL;
+			soundPlayer.playAudio();
 		}
 	}
 	public static void decreaseTossUp(){
@@ -39,6 +42,7 @@ public class Clock {
 		if(tossUpTime == 0){
 			mode = ClockCase.OVERALL;
 			tossUpTime = tossUpTimeStart;
+			soundPlayer.playAudio();
 		}
 	}
 	public static void decreaseBonus(){
@@ -46,6 +50,7 @@ public class Clock {
 		if(bonusTime == 0){
 			mode = ClockCase.OVERALL;
 			bonusTime = bonusTimeStart;
+			soundPlayer.playAudio();
 		}
 	}
 	public static void resetClock(){
