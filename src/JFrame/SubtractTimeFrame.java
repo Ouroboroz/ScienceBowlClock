@@ -25,6 +25,7 @@ public class SubtractTimeFrame extends JFrame {
 		setSize(300,200);
 		setMaximumSize(new Dimension(300,200));
 		setMinimumSize(new Dimension(300,200));
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		submit = new JButton("Apply");
 		addTime = new JLabel();

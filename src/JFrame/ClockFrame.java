@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 public class ClockFrame extends JFrame{
 	private JPanel overallPanel,clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel, buttonPanel, auxButtonPanel;
 	private JButton startTimer, stopTimer, startTossUpTimer, stopTossUpTimer, startBonusTimer, stopBonusTimer, resetTimer, addTime, subtractTime, preferences;
+	private JButton showScore;
 	private ButtonListener buttonListener;
 	private JLabel overallTime, tossUpTime, bonusTime;
 	private GroupLayout overallGrid, clockGrid;
@@ -98,10 +99,12 @@ public class ClockFrame extends JFrame{
 		resetTimer = new JButton("Reset Timer");
 		addTime = new JButton("Add More Time");
 		subtractTime = new JButton("Subtract Time");
+		showScore = new JButton("Show Scoreboard");
 		//Add secondary buttons to panel
 		auxButtonPanel.add(resetTimer);
 		auxButtonPanel.add(addTime);
 		auxButtonPanel.add(subtractTime);
+		auxButtonPanel.add(showScore);
 		//Button Listeners
 		buttonListener = new ButtonListener();
 		startTimer.addActionListener(buttonListener);
@@ -114,6 +117,7 @@ public class ClockFrame extends JFrame{
 		resetTimer.addActionListener(buttonListener);
 		addTime.addActionListener(buttonListener);
 		subtractTime.addActionListener(buttonListener);
+		showScore.addActionListener(buttonListener);
 		//The overall interface panel
 		overallPanel = new JPanel(new GridBagLayout());
 		c = new GridBagConstraints();
@@ -143,5 +147,15 @@ public class ClockFrame extends JFrame{
 		overallTime.setText(overallTimes);
 		tossUpTime.setText(tossUpTimes);
 		bonusTime.setText(bonusTimes);
+	}
+	public void isShowScoreButton(boolean isShow){
+		if(isShow){
+			showScore.setActionCommand("Show Scoreboard");
+			showScore.setText("Show Scoreboard");
+		}
+		else{
+			showScore.setActionCommand("Hide Scoreboard");
+			showScore.setText("Hide Scoreboard");
+		}
 	}
 }
