@@ -2,6 +2,7 @@ package JFrame;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -18,20 +19,24 @@ public class ScoreFrame extends JFrame {
 	JPanel overallPanel, aPanel, bPanel, aTUPanel, aBPanel, bTUPanel, bBPanel;
 	JButton addATossUp, addABonus, addBTossUp, addBBonus, subtract, reset;
 	JPanel addAB, addAT, addBT, addBB, sub, resetPanel;
+	ButtonListener buttonListener;
 	GridBagConstraints c;
 	public ScoreFrame(){
 		//Sets up the frame itself
 		setTitle("Score Board");
-		setSize(800,500);
-		setMaximumSize(new Dimension(800,500));
-		setMinimumSize(new Dimension(800,500));
+		setSize(600,300);
+		setMaximumSize(new Dimension(600,300));
+		setMinimumSize(new Dimension(600,300));
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(ScienceBowlClock.GUI);
+		buttonListener = new ButtonListener();
 		//Layout constant
 		c = new GridBagConstraints();
 		//Sets up the labels
 		teamA = new JLabel(""+Scoreboard.getA());
+			teamA.setFont(new Font("SansSerif",Font.PLAIN,35));
 		teamB = new JLabel(""+Scoreboard.getB());
+			teamB.setFont(new Font("SansSerif",Font.PLAIN,35));
 		teamATossUp = new JLabel(""+Scoreboard.getADist()[0]);
 		teamABonus = new JLabel(""+Scoreboard.getADist()[1]);
 		teamBTossUp = new JLabel(""+Scoreboard.getBDist()[0]);
@@ -63,17 +68,17 @@ public class ScoreFrame extends JFrame {
 		bBPanel.add(teamBBonus);
 		//Buttons
 		addATossUp = new JButton("Add Toss Up For A");
-			addATossUp.addActionListener(new ButtonListener());
+			addATossUp.addActionListener(buttonListener);
 		addABonus = new JButton("Add Bonus For A");
-			addABonus.addActionListener(new ButtonListener());
+			addABonus.addActionListener(buttonListener);
 		addBTossUp = new JButton("Add Toss Up For B");
-			addBTossUp.addActionListener(new ButtonListener());
+			addBTossUp.addActionListener(buttonListener);
 		addBBonus = new JButton("Add Bonus For B");
-			addBBonus.addActionListener(new ButtonListener());
+			addBBonus.addActionListener(buttonListener);
 		subtract = new JButton("Subtract Points");
-			//subtractA.addActionListener(new ButtonListener());
+			//subtractA.addActionListener(buttonListener);
 		reset = new JButton("Reset");
-			reset.addActionListener(new ButtonListener());
+			reset.addActionListener(buttonListener);
 		//Set up overall panel
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.6;

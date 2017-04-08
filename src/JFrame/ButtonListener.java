@@ -33,6 +33,14 @@ public class ButtonListener implements ActionListener {
 				Clock.resetClock();
 				Clock.updateGUI();
 		}
+		else if(source.equals("Show Scoreboard")){
+			ScienceBowlClock.ScoreGUI.setVisible(true);
+			ScienceBowlClock.GUI.isShowScoreButton(false);
+		}
+		else if(source.equals("Hide Scoreboard")){
+			ScienceBowlClock.ScoreGUI.setVisible(false);
+			ScienceBowlClock.GUI.isShowScoreButton(true);
+		}
 		else if(source.equals("Add More Time"))
 				new AddTimeFrame().setVisible(true);
 		else if(source.equals("Subtract Time"))

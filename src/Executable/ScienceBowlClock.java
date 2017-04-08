@@ -11,6 +11,5 @@ public class ScienceBowlClock {
 		GUI = new ClockFrame();
 		GUI.setVisible(true);
 		ScoreGUI = new ScoreFrame();
-		ScoreGUI.setVisible(true);
 	}
 }

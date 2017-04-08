@@ -1,9 +1,10 @@
 package Scoreboard;
 
 public class Scoreboard {
-	private static final int[] startDist = {0,0};
 	private static int[] teamADist = {0,0}, teamBDist = {0,0}; //{toss up, bonus}
 	private static int teamA = 0, teamB = 0;
+	public Scoreboard(){
+	}
 	public static void addDist(int t, int b, Team team){
 		switch(team){
 			case A:
@@ -34,9 +35,12 @@ public class Scoreboard {
 		return teamBDist;
 	}
 	public static void reset(){
-		teamADist = startDist;
-		teamBDist = startDist;
+		teamADist[0] = 0;
+		teamADist[1] = 0;
+		teamBDist[0] = 0;
+		teamBDist[1] = 0;
 		teamA = 0;
 		teamB = 0;
+		updateTotal();
 	}
 }
