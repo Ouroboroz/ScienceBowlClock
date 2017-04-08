@@ -76,7 +76,7 @@ public class ScoreFrame extends JFrame {
 		addBBonus = new JButton("Add Bonus For B");
 			addBBonus.addActionListener(buttonListener);
 		subtract = new JButton("Subtract Points");
-			//subtractA.addActionListener(buttonListener);
+			subtract.addActionListener(buttonListener);
 		reset = new JButton("Reset");
 			reset.addActionListener(buttonListener);
 		//Set up overall panel

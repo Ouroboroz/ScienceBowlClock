@@ -61,6 +61,8 @@ public class ButtonListener implements ActionListener {
 				Scoreboard.addDist(0, 1, Team.B);
 				ScienceBowlClock.ScoreGUI.updateB();
 		}
+		else if(source.equals("Subtract Points"))
+				new SubtractPointsFrame().setVisible(true);
 		else if(source.equals("Reset")){
 				Scoreboard.reset();
 				ScienceBowlClock.ScoreGUI.updateOverall();

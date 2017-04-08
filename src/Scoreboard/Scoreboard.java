@@ -1,5 +1,7 @@
 package Scoreboard;
 
+import Clock.ClockCase;
+
 public class Scoreboard {
 	private static int[] teamADist = {0,0}, teamBDist = {0,0}; //{toss up, bonus}
 	private static int teamA = 0, teamB = 0;
@@ -16,7 +18,25 @@ public class Scoreboard {
 				teamBDist[1] += b;
 				break;
 		}
+		if(teamADist[0] < 0)
+			teamADist[0] = 0;
+		if(teamADist[1] < 0)
+			teamADist[1] = 0;
+		if(teamBDist[0] < 0)
+			teamBDist[0] = 0;
+		if(teamBDist[1] < 0)
+			teamBDist[1] = 0;
 		updateTotal();
+	}
+	public static void addDist(int p, Team team, ClockCase kase){
+		switch(kase){
+			case TOSSUP:
+				addDist(-p, 0, team);
+				break;
+			case BONUS:
+				addDist(0, -p, team);
+				break;
+		}
 	}
 	public static void updateTotal(){
 		teamA = teamADist[0]*4+teamADist[1]*10;
