@@ -17,11 +17,11 @@ public class Main {
      */
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:C://sqlite/db/tests.db";
+        String url = "jdbc:sqlite:./Resources/SQLite/Questions.db";
         
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS warehouses (\n"
-                + "	id integer PRIMARY KEY,\n"
+        String sql = "CREATE TABLE IF NOT EXISTS questions (\n"
+                + "	id integer,\n"
                 + "	name text NOT NULL,\n"
                 + "	capacity real\n"
                 + ");";
