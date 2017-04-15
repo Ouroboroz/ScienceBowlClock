@@ -90,6 +90,44 @@ public class SoundPlayer{
       new PlayThread().start();
     }catch (Exception e) {
       e.printStackTrace();
+      File soundFile =
+              new File("./Resources/Sounds/time-stop.wav");
+ try {
+	audioInputStream = AudioSystem.
+	             getAudioInputStream(soundFile);
+} catch (UnsupportedAudioFileException e1) {
+	// TODO Auto-generated catch block
+	e1.printStackTrace();
+} catch (IOException e1) {
+	// TODO Auto-generated catch block
+	e1.printStackTrace();
+}
+ audioFormat = audioInputStream.getFormat();
+ System.out.println(audioFormat);
+
+ DataLine.Info dataLineInfo =
+                     new DataLine.Info(
+                       SourceDataLine.class,
+                               audioFormat);
+
+ try {
+	sourceDataLine =
+	        (SourceDataLine)AudioSystem.getLine(
+	                              dataLineInfo);
+} catch (LineUnavailableException e1) {
+	// TODO Auto-generated catch block
+	e1.printStackTrace();
+}
+
+ //Create a thread to play back the data and
+ // start it running.  It will run until the
+ // end of file, or the Stop button is
+ // clicked, whichever occurs first.
+ // Because of the data buffers involved,
+ // there will normally be a delay between
+ // the click on the Stop button and the
+ // actual termination of playback.
+ new PlayThread().start();
     }//end catch
   }//end playAudio
 
