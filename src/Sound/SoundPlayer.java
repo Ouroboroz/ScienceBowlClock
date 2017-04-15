@@ -64,7 +64,7 @@ public class SoundPlayer{
 	public void playAudio() {
     try{
       File soundFile =
-                   new File("./Resources/Sounds/time-stop.wav");
+                   new File("../Resources/Sounds/time-stop.wav");
       audioInputStream = AudioSystem.
                   getAudioInputStream(soundFile);
       audioFormat = audioInputStream.getFormat();

@@ -2,7 +2,7 @@ package Executable;
 
 import JFrame.ClockFrame;
 import JFrame.ScoreFrame;
-
+  
 public class ScienceBowlClock {
 	public static ClockFrame GUI;
 	public static ScoreFrame ScoreGUI;
