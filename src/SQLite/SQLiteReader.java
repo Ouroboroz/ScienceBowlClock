@@ -16,10 +16,15 @@ public class SQLiteReader {
 			conn = DriverManager.getConnection(url);
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
+			try {
+				conn = DriverManager.getConnection("."+url);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		return conn;
 	}
-	
 	public void selectAll(String round){
 		questionsArray.clear();
 		String sql = "SELECT question, answer FROM questions WHERE round ==\""+round+"\"";
