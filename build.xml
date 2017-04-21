@@ -1,7 +1,12 @@
 <project>
 
   <target name="test">
-    <javac srcdir="src" destdir="bin"/>
+    <javac srcdir="src" destdir="bin">
+    	<classpath>
+    		<path path = "@{classpath}"/>
+    		<pathelement location = "C:\Users\creep\Desktop\Workspace\ScienceBowlClock\Resources\External Jars\sqlite-jdbc-3.16.1.jar"/>
+    	</classpath>
+    </javac>
   </target>
   
 </project>
