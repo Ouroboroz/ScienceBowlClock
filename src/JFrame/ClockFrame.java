@@ -26,8 +26,6 @@ public class ClockFrame extends JFrame{
 		//Sets up the frame
 		setTitle("Science Bowl Clock");
 		setSize(800,500);
-		setMaximumSize(new Dimension(800,500));
-		setMinimumSize(new Dimension(800,500));
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		//Creates the panel to hold the times

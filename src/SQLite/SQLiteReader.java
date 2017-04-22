@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class SQLiteReader {
 	public static ArrayList<SQLiteItem> questionsArray = new ArrayList<SQLiteItem>(); 
 	private static Connection connect() {
-		String url = "jdbc:sqlite:./Resources/db/test.db";
+		String url = "jdbc:sqlite:./Resources/SQLite/questionsDB";
 		Connection conn = null;
 		try{
 			conn = DriverManager.getConnection(url);

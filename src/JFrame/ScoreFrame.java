@@ -25,8 +25,6 @@ public class ScoreFrame extends JFrame {
 		//Sets up the frame itself
 		setTitle("Score Board");
 		setSize(600,300);
-		setMaximumSize(new Dimension(600,300));
-		setMinimumSize(new Dimension(600,300));
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(ScienceBowlClock.GUI);
 		buttonListener = new ButtonListener();
