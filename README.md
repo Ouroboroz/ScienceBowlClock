@@ -17,3 +17,6 @@ A countdown timer for Science Bowl.
   * Windows:
     * Run the WindowsExecuteFile
   
+
+
+I would like to thank the [Protobowl Team](https://github.com/neotenic/protobowl) for allowing me to use their JSON of Science Bowl questions!
