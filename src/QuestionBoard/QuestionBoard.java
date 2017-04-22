@@ -134,6 +134,7 @@ public class QuestionBoard extends JFrame {
 			question.setFont(new Font("SansSerif",Font.PLAIN,20));
 			questionPanel.setLayout(new GridBagLayout());
 			questionPanel.setBackground(new Color(0,255,0));
+			questionP.setBackground(new Color(0,255,0));
 			questionPanel.add(questionP,c);
 		answerPanel = new JPanel();
 			answerP = new JPanel();
@@ -213,7 +214,9 @@ public class QuestionBoard extends JFrame {
 		topic.setText(SQLiteReader.getQuestionsArray().get(arrayNumber).getTopic());
 	}
 	public void updateQuestion(){
-		question.setText("<html>"+SQLiteReader.getQuestionsArray().get(arrayNumber).getQuestion()+"</html>");
+		String update = SQLiteReader.getQuestionsArray().get(arrayNumber).getQuestion();
+		update = update.replaceAll("(\\\\n)","<br>");
+		question.setText("<html>"+update+"</html>");
 	}
 	public void hideAnswer(){
 		answer.setText("*~*~*~*~*~*~*");
