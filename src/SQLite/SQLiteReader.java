@@ -20,7 +20,13 @@ public class SQLiteReader {
 				conn = DriverManager.getConnection("."+url);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println(e.getMessage());
+				try {
+					conn = DriverManager.getConnection("jdbc:sqlite:../Resources/SQLite/questionsDB");
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 			}
 		}
 		return conn;
