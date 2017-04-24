@@ -17,12 +17,12 @@ public class SQLiteReader {
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
 			try {
-				conn = DriverManager.getConnection("."+url);
+				conn = DriverManager.getConnection("jdbc:sqlite:../Resources/SQLite/questionsDB");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 				try {
-					conn = DriverManager.getConnection("jdbc:sqlite:../Resources/SQLite/questionsDB");
+					conn = DriverManager.getConnection("jdbc:sqlite:/Resources/SQLite/questionsDB");
 				} catch (SQLException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -32,6 +32,7 @@ public class SQLiteReader {
 		return conn;
 	}
 	public static void selectRound(String round){
+		int actualNumber = 1;
 		int previousNumber = 0;
 		String type = "Toss Up";
 		questionsArray.clear();
@@ -40,11 +41,15 @@ public class SQLiteReader {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql)){
 			while(rs.next()){
-				if(!(rs.getInt("qnumber") == previousNumber))
+				if(rs.getInt("qnumber") == 0)
+					actualNumber = 1;
+				else
+					actualNumber = rs.getInt("qnumber");
+				if(!(actualNumber == previousNumber))
 					type = "Toss Up";
 				else
 					type = "Bonus";
-				questionsArray.add(new SQLiteItem(rs.getInt("qnumber"), type, rs.getString("topic"), rs.getString("question"), rs.getString("answer")));
+				questionsArray.add(new SQLiteItem(actualNumber, type, rs.getString("topic"), rs.getString("question"), rs.getString("answer")));
 				previousNumber = rs.getInt("qnumber");
 			}
 		} catch(SQLException e){
