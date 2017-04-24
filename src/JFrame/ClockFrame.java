@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -13,10 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Executable.ScienceBowlClock;
+
 public class ClockFrame extends JFrame{
 	private JPanel overallPanel,clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel, buttonPanel, auxButtonPanel;
+	private JPanel qNa;
 	private JButton startTimer, stopTimer, startTossUpTimer, stopTossUpTimer, startBonusTimer, stopBonusTimer, resetTimer, addTime, subtractTime, preferences;
 	private JButton showScore;
+	private JButton showQuestions, showAnswer;
 	private ButtonListener buttonListener;
 	private JLabel overallTime, tossUpTime, bonusTime;
 	private GroupLayout overallGrid, clockGrid;
@@ -25,7 +31,7 @@ public class ClockFrame extends JFrame{
 	public ClockFrame() {
 		//Sets up the frame
 		setTitle("Science Bowl Clock");
-		setSize(800,500);
+		setSize(750,500);
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		//Creates the panel to hold the times
@@ -124,13 +130,47 @@ public class ClockFrame extends JFrame{
 		c.gridx = 0;
 		c.gridy = 0;
 		overallPanel.add(clockPanel, c);
-		c.weighty = 0.4;
+		c.weighty = 0.3;
 		c.gridy = 1;
 		buttonPanel.setLayout(new GridBagLayout());
 		overallPanel.add(buttonPanel, c);
-		c.weighty = 0.2;
+		c.weighty = 0.1;
 		c.gridy = 2;
 		overallPanel.add(auxButtonPanel,c);
+		c.weighty = 0.05;
+		c.gridy = 3;
+		qNa = new JPanel(new GridBagLayout());
+		showQuestions = new JButton("Show Question Board");
+			showQuestions.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					if(e.getActionCommand().equals("Hide Question Board")){
+						ScienceBowlClock.QuestionBoard.setVisible(false);
+						showQuestions.setText("Show Question Board");
+					}
+					else{
+						ScienceBowlClock.QuestionBoard.setVisible(true);
+						showQuestions.setText("Hide Question Board");
+					}
+					
+				}
+				
+			});
+			qNa.add(showQuestions);
+		showAnswer = new JButton("Show Answer Board");
+			showAnswer.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					if(e.getActionCommand().equals("Hide Answer Board")){
+						ScienceBowlClock.AnswerBoard.setVisible(false);
+						showAnswer.setText("Show Answer Board");
+					}
+					else{
+						ScienceBowlClock.AnswerBoard.setVisible(true);
+						showAnswer.setText("Hide Answer Board");
+					}
+				}
+			});
+			qNa.add(showAnswer);
+		overallPanel.add(qNa,c);
 		add(overallPanel);
 	}
 	public void updateTimes(int[] timeO, int timeT, int timeB){

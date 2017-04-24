@@ -28,7 +28,7 @@ public class QuestionBoard extends JFrame {
 	
 	public QuestionBoard(){
 		setTitle("Question Board");
-		setSize(800,1000);
+		setSize(690,1000);
 		setDefaultCloseOperation(this.HIDE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		//Button that shows the answer which normally would be hidden
