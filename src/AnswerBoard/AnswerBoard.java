@@ -31,7 +31,7 @@ public class AnswerBoard extends JFrame {
 	public AnswerBoard(){
 		setTitle("Answer Board");
 		setSize(500,300);
-		setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
 		setLocationRelativeTo(null);
 		answer = new JLabel("<html>Please select the answer to view</html>");
 		c = new GridBagConstraints();
