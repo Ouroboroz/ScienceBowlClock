@@ -24,8 +24,8 @@ public class ScoreFrame extends JFrame {
 	public ScoreFrame(){
 		//Sets up the frame itself
 		setTitle("Score Board");
-		setSize(600,300);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setSize(750,300);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setLocationRelativeTo(ScienceBowlClock.GUI);
 		buttonListener = new ButtonListener();
 		//Layout constant
@@ -79,14 +79,15 @@ public class ScoreFrame extends JFrame {
 			reset.addActionListener(buttonListener);
 		//Set up overall panel
 		c.fill = GridBagConstraints.BOTH;
+		c.gridwidth = 2;
 		c.weightx = 0.6;
 		c.weighty = 0.1;
-		c.gridx = 1;
+		c.gridx = 0;
 		c.gridy = 0;
 		overallPanel.add(new JLabel("Overall A Score:"), c);
 		c.gridx = 2;
 		overallPanel.add(new JLabel("Overall B Score:"), c);
-		c.gridx = 1;
+		c.gridx = 0;
 		c.gridy = 1;
 		c.weighty = 0.7;
 		overallPanel.add(aPanel, c);
@@ -96,6 +97,7 @@ public class ScoreFrame extends JFrame {
 		c.gridy = 2;
 		c.weighty = 0.1;
 		c.weightx = 0.2;
+		c.gridwidth = 1; //CHECK
 		overallPanel.add(new JLabel("A Bonus:"), c);
 		c.gridx = 1;
 		overallPanel.add(new  JLabel("A Toss Up: "), c);
@@ -107,7 +109,7 @@ public class ScoreFrame extends JFrame {
 		c.gridy = 3;
 		c.weighty = 0.3;
 		overallPanel.add(aBPanel, c);
-		c.gridx = 1;
+		c.gridx = 0;
 		overallPanel.add(aTUPanel, c);
 		c.gridx++;
 		overallPanel.add(bTUPanel, c);
