@@ -3,6 +3,9 @@ A countdown timer for Science Bowl.
 
 ### Features:
 * A countdown display of the overall time, toss up time and bonus time
+* A window to keep track of the scores of two teams
+* A window to display the questions and answers
+* A window to easily search for a specific answer
 * Buttons to start/stop the times, to reset the times and to add/subtract time
 * Easy executable programs for both Mac OS and Windows
 
