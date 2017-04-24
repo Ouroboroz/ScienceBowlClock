@@ -11,6 +11,7 @@ A countdown timer for Science Bowl.
 * [All Releases](https://github.com/Ouroboroz/ScienceBowlClock/releases)
 ### Running the app:
 * Have Java installed on the computer
+* Download the source code
 * Execute:
   * Mac OS:
     * Run the MacExecute file
