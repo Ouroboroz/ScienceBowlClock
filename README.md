@@ -7,8 +7,8 @@ A countdown timer for Science Bowl.
 * Easy executable programs for both Mac OS and Windows
 
 ### Download:
-* Latest Major Release: https://github.com/Ouroboroz/ScienceBowlClock/releases/tag/v3.1
-* All Releases: https://github.com/Ouroboroz/ScienceBowlClock/releases
+* [Latest Release: Version 3.1](https://github.com/Ouroboroz/ScienceBowlClock/releases/tag/v3.1)
+* [All Releases](https://github.com/Ouroboroz/ScienceBowlClock/releases)
 ### Running the app:
 * Have Java installed on the computer
 * Execute:
