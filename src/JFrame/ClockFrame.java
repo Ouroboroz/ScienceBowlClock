@@ -8,14 +8,20 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 import Executable.ScienceBowlClock;
+import Menu.MainMenu;
 
 public class ClockFrame extends JFrame{
 	private JPanel overallPanel,clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel, buttonPanel, auxButtonPanel;
@@ -28,12 +34,15 @@ public class ClockFrame extends JFrame{
 	private GroupLayout overallGrid, clockGrid;
 	String overallTimes, tossUpTimes, bonusTimes;
 	GridBagConstraints c;
+	MainMenu mainMenu;
 	public ClockFrame() {
 		//Sets up the frame
 		setTitle("Science Bowl Clock");
 		setSize(750,500);
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		mainMenu = new MainMenu();
+		setJMenuBar(mainMenu);
 		//Creates the panel to hold the times
 		clockPanel = new JPanel();
 		//Creates the time labels
@@ -144,11 +153,11 @@ public class ClockFrame extends JFrame{
 			showQuestions.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					if(e.getActionCommand().equals("Hide Question Board")){
-						ScienceBowlClock.QuestionBoard.setVisible(false);
+						//ScienceBowlClock.QuestionBoard.setVisible(false);
 						showQuestions.setText("Show Question Board");
 					}
 					else{
-						ScienceBowlClock.QuestionBoard.setVisible(true);
+					//	ScienceBowlClock.QuestionBoard.setVisible(true);
 						showQuestions.setText("Hide Question Board");
 					}
 					
@@ -160,11 +169,11 @@ public class ClockFrame extends JFrame{
 			showAnswer.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					if(e.getActionCommand().equals("Hide Answer Board")){
-						ScienceBowlClock.AnswerBoard.setVisible(false);
+					//	ScienceBowlClock.AnswerBoard.setVisible(false);
 						showAnswer.setText("Show Answer Board");
 					}
 					else{
-						ScienceBowlClock.AnswerBoard.setVisible(true);
+					//	ScienceBowlClock.AnswerBoard.setVisible(true);
 						showAnswer.setText("Hide Answer Board");
 					}
 				}
