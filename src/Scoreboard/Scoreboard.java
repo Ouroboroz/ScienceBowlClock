@@ -18,14 +18,6 @@ public class Scoreboard {
 				teamBDist[1] += b;
 				break;
 		}
-		if(teamADist[0] < 0)
-			teamADist[0] = 0;
-		if(teamADist[1] < 0)
-			teamADist[1] = 0;
-		if(teamBDist[0] < 0)
-			teamBDist[0] = 0;
-		if(teamBDist[1] < 0)
-			teamBDist[1] = 0;
 		updateTotal();
 	}
 	public static void addDist(int p, Team team, ClockCase kase){

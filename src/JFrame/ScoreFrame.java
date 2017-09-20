@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Executable.ScienceBowlClock;
+import Menu.ScoreboardMenu;
 import Scoreboard.Scoreboard;
 
 public class ScoreFrame extends JFrame {
@@ -21,12 +22,15 @@ public class ScoreFrame extends JFrame {
 	JPanel addAB, addAT, addBT, addBB, sub, resetPanel;
 	ButtonListener buttonListener;
 	GridBagConstraints c;
+	ScoreboardMenu scoreMenu;
 	public ScoreFrame(){
 		//Sets up the frame itself
 		setTitle("Score Board");
 		setSize(750,300);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setLocationRelativeTo(ScienceBowlClock.GUI);
+		scoreMenu = new ScoreboardMenu();
+		setJMenuBar(scoreMenu);
 		buttonListener = new ButtonListener();
 		//Layout constant
 		c = new GridBagConstraints();
@@ -108,8 +112,9 @@ public class ScoreFrame extends JFrame {
 		c.gridx = 0;
 		c.gridy = 3;
 		c.weighty = 0.3;
-		overallPanel.add(aBPanel, c);
 		c.gridx = 0;
+		overallPanel.add(aBPanel, c);
+		c.gridx++;
 		overallPanel.add(aTUPanel, c);
 		c.gridx++;
 		overallPanel.add(bTUPanel, c);
