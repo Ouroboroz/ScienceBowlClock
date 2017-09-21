@@ -39,18 +39,20 @@ Tested using SDK 1.4.1 under Win2000
 ************************************************/
 
 import javax.swing.*;
+
+import Executable.ScienceBowlClock;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import javax.sound.sampled.*;
-
 public class SoundPlayer{
 
   AudioFormat audioFormat;
   AudioInputStream audioInputStream;
   SourceDataLine sourceDataLine;
   boolean stopPlayback = false;
-
+ 
   public SoundPlayer(){//constructor
   }//end constructor
   //-------------------------------------------//
@@ -63,11 +65,14 @@ public class SoundPlayer{
   }
 	public void playAudio() {
     try{
-      File soundFile =
-                   new File("../Resources/Sounds/time-stop.wav");
+      /*File soundFile =
+                   new File("/time-stop.wav");
       audioInputStream = AudioSystem.
-                  getAudioInputStream(soundFile);
-      audioFormat = audioInputStream.getFormat();
+                  getAudioInputStream(soundFile);*/
+    	InputStream in = this.getClass().getResourceAsStream("/time-stop.wav");
+    	InputStream bufferedIn = new BufferedInputStream(in);
+    	audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
+    	audioFormat = audioInputStream.getFormat();
       System.out.println(audioFormat);
 
       DataLine.Info dataLineInfo =
@@ -90,45 +95,8 @@ public class SoundPlayer{
       new PlayThread().start();
     }catch (Exception e) {
       e.printStackTrace();
-      File soundFile =
-              new File("./Resources/Sounds/time-stop.wav");
- try {
-	audioInputStream = AudioSystem.
-	             getAudioInputStream(soundFile);
-} catch (UnsupportedAudioFileException e1) {
-	// TODO Auto-generated catch block
-	e1.printStackTrace();
-} catch (IOException e1) {
-	// TODO Auto-generated catch block
-	e1.printStackTrace();
-}
- audioFormat = audioInputStream.getFormat();
- System.out.println(audioFormat);
-
- DataLine.Info dataLineInfo =
-                     new DataLine.Info(
-                       SourceDataLine.class,
-                               audioFormat);
-
- try {
-	sourceDataLine =
-	        (SourceDataLine)AudioSystem.getLine(
-	                              dataLineInfo);
-} catch (LineUnavailableException e1) {
-	// TODO Auto-generated catch block
-	e1.printStackTrace();
-}
-
- //Create a thread to play back the data and
- // start it running.  It will run until the
- // end of file, or the Stop button is
- // clicked, whichever occurs first.
- // Because of the data buffers involved,
- // there will normally be a delay between
- // the click on the Stop button and the
- // actual termination of playback.
- new PlayThread().start();
-    }//end catch
+      ScienceBowlClock.ScoreGUI.setVisible(true);
+      }//end catch
   }//end playAudio
 
 

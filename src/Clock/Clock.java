@@ -35,6 +35,7 @@ public class Clock {
 			stopCountdown();
 			mode = ClockCase.OVERALL;
 			soundPlayer.playAudio();
+			ScienceBowlClock.GUI.incrementClick(0);
 		}
 	}
 	public static void decreaseTossUp(){
@@ -43,6 +44,7 @@ public class Clock {
 			mode = ClockCase.OVERALL;
 			tossUpTime = tossUpTimeStart;
 			soundPlayer.playAudio();
+			ScienceBowlClock.GUI.incrementClick(1);
 		}
 	}
 	public static void decreaseBonus(){
@@ -51,6 +53,7 @@ public class Clock {
 			mode = ClockCase.OVERALL;
 			bonusTime = bonusTimeStart;
 			soundPlayer.playAudio();
+			ScienceBowlClock.GUI.incrementClick(2);
 		}
 	}
 	public static void resetClock(){
