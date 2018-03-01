@@ -49,7 +49,7 @@ public class ClockFrame extends JFrame{
 		setJMenuBar(mainMenu);
 		//Creates the panel for the overall time
 		overallTime = new JLabel();
-		overallTimes = "15:00";
+		overallTimes = "8:00";
 		overallTime.setText(overallTimes);
 		overallTimePanel = new JPanel();
 		overallTimePanel.setLayout(new GridBagLayout());
@@ -59,15 +59,19 @@ public class ClockFrame extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e){
 				incrementClick(0);
-				if(clickCount[0] == 1)
+				if(clickCount[0] == 1){
 					Clock.startCountdown();
-				else
+					Clock.setIsOverall(true);
+				}
+				else{
 					Clock.stopCountdown();
+					Clock.setIsOverall(false);
+				}
 			}
 		});
 		//Creates the panel for the toss up
 		tossUpTime = new JLabel();
-		tossUpTimes = "08";
+		tossUpTimes = "05";
 		tossUpTime.setText(tossUpTimes);
 		tossUpTimePanel = new JPanel();
 		tossUpTimePanel.setLayout(new GridBagLayout());

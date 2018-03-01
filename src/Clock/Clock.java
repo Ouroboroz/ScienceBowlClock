@@ -5,10 +5,11 @@ import Executable.ScienceBowlClock;
 import Sound.SoundPlayer;
 
 public class Clock {
-	public static Timer timer = new Timer(1000, new CountdownPerformer());
-	private static final int overallTimeStart = 15, tossUpTimeStart = 8, bonusTimeStart = 20;
-	private static int[] overallTime = {15,0}; //[minute, second]
-	private static int tossUpTime = 8, bonusTime = 20; //8, 20
+	private static Timer timer = new Timer(1000, new CountdownPerformer());
+	private static final int overallTimeStart = 8, tossUpTimeStart = 5, bonusTimeStart = 20;
+	private static boolean isOverall = false;
+	private static int[] overallTime = {8,0}; //[minute, second]
+	private static int tossUpTime = 5, bonusTime = 20; //8, 20
 	private static ClockCase mode = ClockCase.OVERALL;
 	private static SoundPlayer soundPlayer = new SoundPlayer();
 	public Clock(){
@@ -32,10 +33,8 @@ public class Clock {
 		overallTime[0] = totSec/60;
 		overallTime[1] = totSec%60;
 		if(totSec == 0){
-			stopCountdown();
-			mode = ClockCase.OVERALL;
+			isOverall = false;
 			soundPlayer.playAudio();
-			ScienceBowlClock.GUI.incrementClick(0);
 		}
 	}
 	public static void decreaseTossUp(){
@@ -84,6 +83,11 @@ public class Clock {
 				break;
 		}
 	}
+	//Setters
+	public static boolean setIsOverall(boolean isTrue){
+		isOverall = isTrue;
+		return isOverall;
+	}
 	//Getters
 	public static int[] getOverallTime(){
 		return overallTime;
@@ -96,5 +100,8 @@ public class Clock {
 	}
 	public static ClockCase getMode(){
 		return mode;
+	}
+	public static boolean isOverall(){
+		return isOverall;
 	}
 }

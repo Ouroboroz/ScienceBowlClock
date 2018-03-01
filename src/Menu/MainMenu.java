@@ -73,11 +73,11 @@ public class MainMenu extends JMenuBar{
 				overallTimeM.add(startOT);
 				overallTimeM.add(stopOT);
 			startStop.add(tossUpTimeM);
-				bonusTimeM.add(startTT);
-				bonusTimeM.add(stopTT);
+				bonusTimeM.add(startBT);
+				bonusTimeM.add(stopBT);
 			startStop.add(bonusTimeM);
-				tossUpTimeM.add(startBT);
-				tossUpTimeM.add(stopBT);
+				tossUpTimeM.add(startTT);
+				tossUpTimeM.add(stopTT);
 		add(changeTime);
 			changeTime.add(addTimeM);
 			changeTime.add(subtractTimeM);
