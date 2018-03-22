@@ -34,13 +34,12 @@ public class ClockFrame extends JFrame{
 	JPanel clockPanel, overallTimePanel, tossUpTimePanel, bonusTimePanel;
 	GroupLayout clockGrid;
 	JButton showScore;
-	ButtonListener buttonListener;
 	GridBagConstraints c;
 	int[] clickCount = {0,0,0};
 	public ClockFrame(){
 		//Creates name and frame settings
 		setTitle("Science Bowl Clock");
-		setSize(750, 500);
+		setSize(900, 600);
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		//Sets up initial Click Counter
@@ -114,9 +113,7 @@ public class ClockFrame extends JFrame{
 		tossUpTime.setFont(new Font("SansSerif",Font.PLAIN,50));
 		bonusTime.setFont(new Font("SansSerif",Font.PLAIN,50));
 		//Sets up the scoreboard button
-		buttonListener = new ButtonListener();
 		showScore = new JButton("Show Scoreboard");
-		showScore.addActionListener(buttonListener);
 		showScore.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
 				  if(e.getActionCommand().equals("Show Scoreboard")){

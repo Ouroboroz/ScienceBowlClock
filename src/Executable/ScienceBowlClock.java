@@ -1,8 +1,8 @@
 package Executable;
 
 import JFrame.ClockFrame;
-import JFrame.ClockFrameOld;
 import JFrame.ScoreFrame;
+import Scoreboard.Scoreboard;
   
 public class ScienceBowlClock {
 	public static ClockFrame GUI;
@@ -14,6 +14,7 @@ public class ScienceBowlClock {
 		GUI.setVisible(true);
 		//newGUI = new ClockFrameOld();
 		//newGUI.setVisible(true);
+		Scoreboard.initScoreboard();
 		ScoreGUI = new ScoreFrame();
 		ScoreGUI.setLocationRelativeTo(GUI);
 	}

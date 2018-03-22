@@ -73,7 +73,7 @@ public class SoundPlayer{
     	InputStream bufferedIn = new BufferedInputStream(in);
     	audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
     	audioFormat = audioInputStream.getFormat();
-      System.out.println(audioFormat);
+      //System.out.println(audioFormat);
 
       DataLine.Info dataLineInfo =
                           new DataLine.Info(
