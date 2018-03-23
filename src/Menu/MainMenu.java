@@ -69,6 +69,7 @@ public class MainMenu extends JMenuBar{
 		reset = new JMenu("Reset");
 		oReset = new JMenuItem("Reset Overall Time");
 			oReset.addActionListener(menuLis);
+			oReset.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
 		tReset = new JMenuItem("Reset Toss Up Time");
 			tReset.addActionListener(menuLis);
 		bReset = new JMenuItem("Reset Bonus Time");
