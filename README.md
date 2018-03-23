@@ -3,24 +3,14 @@ A countdown timer for Science Bowl.
 
 ### Features:
 * A countdown display of the overall time, toss up time and bonus time
-* A window to keep track of the scores of two teams
-* A window to display the questions and answers
-* A window to easily search for a specific answer
-* Buttons to start/stop the times, to reset the times and to add/subtract time
-* Easy executable programs for both Mac OS and Windows
+* A window to keep track of the scores of two teams and player contribution
+* Exportable CSV to analyze team data/performance
+* Easy to start/stop the times, to reset the times and to add/subtract time
 
 ### Download:
-* [Latest Release: Version 3.2](https://github.com/Ouroboroz/ScienceBowlClock/releases/tag/v3.2)
+* [Latest Release: Version 1.0](https://github.com/Ouroboroz/ScienceBowlClock/releases/tag/1.0)
 * [All Releases](https://github.com/Ouroboroz/ScienceBowlClock/releases)
 ### Running the app:
 * Have Java installed on the computer
-* Download the source code
-* Execute:
-  * Mac OS:
-    * Run the MacExecute file
-  * Windows:
-    * Run the WindowsExecuteFile
-  
----
-
-I would like to thank the [Protobowl Team](https://github.com/neotenic/protobowl) for allowing me to use their JSON of Science Bowl questions!
+* Download ScienceBowlClock.zip
+* Follow README in the zip
