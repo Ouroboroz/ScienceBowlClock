@@ -48,7 +48,7 @@ public class ClockFrame extends JFrame{
 		setJMenuBar(mainMenu);
 		//Creates the panel for the overall time
 		overallTime = new JLabel();
-		overallTimes = "8:00";
+		overallTimes = "08:00";
 		overallTime.setText(overallTimes);
 		overallTimePanel = new JPanel();
 		overallTimePanel.setLayout(new GridBagLayout());
@@ -57,14 +57,16 @@ public class ClockFrame extends JFrame{
 		overallTimePanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e){
-				incrementClick(0);
-				if(clickCount[0] == 1){
-					Clock.startCountdown();
-					Clock.setIsOverall(true);
-				}
-				else{
-					Clock.stopCountdown();
-					Clock.setIsOverall(false);
+				if(Clock.getMode() != ClockCase.HALFTIME){
+					incrementClick(0);
+					if(clickCount[0] == 1){
+						Clock.startCountdown();
+						Clock.setIsOverall(true);
+					}
+					else{
+						Clock.stopCountdown();
+						Clock.setIsOverall(false);
+					}
 				}
 			}
 		});
@@ -79,12 +81,16 @@ public class ClockFrame extends JFrame{
 		tossUpTimePanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e){
-				incrementClick(1);
-				if(clickCount[1] == 1)
-					Clock.setMode(ClockCase.TOSSUP);
-				else{
-					Clock.setMode(ClockCase.OVERALL);
-					Clock.resetTossUp();
+				if(Clock.getMode() != ClockCase.HALFTIME){
+					if(Clock.isOverall()){
+						incrementClick(1);
+						if(clickCount[1] == 1)
+							Clock.setMode(ClockCase.TOSSUP);
+						else{
+							Clock.setMode(ClockCase.OVERALL);
+							Clock.resetTossUp();
+						}
+					}
 				}
 			}
 		});
@@ -99,12 +105,16 @@ public class ClockFrame extends JFrame{
 		bonusTimePanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e){
-				incrementClick(2);
-				if(clickCount[2] == 1)
-					Clock.setMode(ClockCase.BONUS);
-				else{
-					Clock.setMode(ClockCase.OVERALL);
-					Clock.resetBonus();
+				if(Clock.getMode() != ClockCase.HALFTIME){
+					if(Clock.isOverall()){
+						incrementClick(2);
+						if(clickCount[2] == 1)
+							Clock.setMode(ClockCase.BONUS);
+						else{
+							Clock.setMode(ClockCase.OVERALL);
+							Clock.resetBonus();
+						}
+					}
 				}
 			}
 		});
@@ -190,5 +200,8 @@ public class ClockFrame extends JFrame{
 		clickCount[type]++;
 		if(clickCount[type] >= 2)
 			clickCount[type] = 0;
+	}
+	public void setOverallPanelColor(Color color){
+		overallTimePanel.setBackground(color);
 	}
 }

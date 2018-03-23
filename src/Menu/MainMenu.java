@@ -12,6 +12,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
+import Clock.Clock;
+import Clock.ClockCase;
+import Executable.ScienceBowlClock;
+
 public class MainMenu extends JMenuBar{
 	private JMenu file, startStop, changeTime, reset;
 	//For the file menu
@@ -30,6 +34,8 @@ public class MainMenu extends JMenuBar{
 	private JMenuItem oReset, tReset, bReset;
 	private JMenu scoreboard;
 		private JMenuItem showHide;
+	private JToolBar toolbar;
+	private JButton halftime;
 	MenuListener menuLis;
 	public MainMenu(){
 		//Instantiate the MenuBar items
@@ -71,6 +77,34 @@ public class MainMenu extends JMenuBar{
 			showHide = new JMenuItem("Show Scoreboard");
 				showHide.addActionListener(menuLis);
 			showHide.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
+			toolbar = new JToolBar();
+			toolbar.setFloatable(false);
+		halftime = new JButton("Start Halftime");
+			halftime.setBackground(new Color(0,126,0));
+			halftime.setOpaque(false);
+		halftime.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if("Start Halftime".equals(e.getActionCommand())){
+					halftime.setText("Stop Halftime");
+					halftime.setBackground(new Color(126,0,0));
+					Clock.setMode(ClockCase.HALFTIME);
+					ScienceBowlClock.GUI.setOverallPanelColor(new Color(0,255,255));
+					Clock.resetClock();
+					Clock.incrementTime(-360, ClockCase.OVERALL);
+					Clock.updateGUI();
+					Clock.startCountdown();
+				}
+				else{
+					halftime.setText("Start Halftime");
+					halftime.setBackground(new Color(0,126,0));
+					Clock.setMode(ClockCase.OVERALL);
+					Clock.stopCountdown();
+					Clock.resetClock();
+					Clock.updateGUI();
+					ScienceBowlClock.GUI.setOverallPanelColor(new Color(255,255,0));
+				}
+			}
+		});
 		add(file);
 			file.add(about);
 		add(startStop);
@@ -92,7 +126,8 @@ public class MainMenu extends JMenuBar{
 			reset.add(bReset);
 		add(scoreboard);
 			scoreboard.add(showHide);
-		
+		add(toolbar);
+			toolbar.add(halftime);
 	}
 	public void changeShowHide(String text){
 		showHide.setText(text);
