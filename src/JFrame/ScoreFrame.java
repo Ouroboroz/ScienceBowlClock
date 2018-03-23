@@ -51,11 +51,10 @@ public class ScoreFrame extends JFrame {
             fireTableCellUpdated(row, col); }
      	 public boolean isCellEditable(int row, int col){
      		 //System.out.println(row+":"+col+":"+editable[Scoreboard.binarizeRow(row)][col]);
-     		 return editable[Scoreboard.binarizeRow(row)][col] || !data[row][col].equals("   ") && col != 0;
+     		 return editable[Scoreboard.binarizeRow(row)][col] || (!data[row][col].equals("   ") && col != 0) || scoreMenu.isFullEdit();
      		 //return true;
      	 }
      };
-     String[] list = {"hello","hello","hello","hello","hello","hello"};
     private JTable rowHeader = new JTable(
     		new AbstractTableModel(){
     			private String[] columnNames = Scoreboard.getColumnList();

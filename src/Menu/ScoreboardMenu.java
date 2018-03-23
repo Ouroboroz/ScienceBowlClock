@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -19,6 +20,7 @@ import FileWriter.CSVWriter;
 public class ScoreboardMenu extends JMenuBar {
 	JMenu file, scoreboard;
 	JMenuItem hide, export, reset;
+	JCheckBoxMenuItem fullEditBox;
 	MenuListener menuLis;
 	public ScoreboardMenu(){
 		menuLis = new MenuListener();
@@ -38,5 +40,10 @@ public class ScoreboardMenu extends JMenuBar {
 		add(scoreboard);
 		scoreboard.add(hide);
 		scoreboard.add(reset);
+		fullEditBox = new JCheckBoxMenuItem("Unlock Scoreboard",false);
+		add(fullEditBox);
+	}
+	public boolean isFullEdit(){
+		return fullEditBox.getState();
 	}
 }
