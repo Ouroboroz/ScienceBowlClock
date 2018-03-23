@@ -31,21 +31,23 @@ public class MenuListener implements ActionListener{
 				Clock.setMode(ClockCase.TOSSUP);
 		else if(source.equals("Stop Toss Up Time")){
 				Clock.setMode(ClockCase.OVERALL);
-				Clock.resetTossUp();}
+			}
 		else if(source.equals("Start Bonus Time"))
 				Clock.setMode(ClockCase.BONUS);
 		else if(source.equals("Stop Bonus Time")){
 				Clock.setMode(ClockCase.OVERALL);
-				Clock.resetBonus();}
+			}
 		else if(source.equals("Reset Overall Time")){
 				Clock.resetClock();
 				Clock.updateGUI();
 		}
 		else if(source.equals("Reset Toss Up Time")){
+			Clock.setMode(ClockCase.OVERALL);
 			Clock.resetTossUp();
 			Clock.updateGUI();
 		}
 		else if(source.equals("Reset Bonus Time")){
+			Clock.setMode(ClockCase.OVERALL);
 			Clock.resetBonus();
 			Clock.updateGUI();
 		}

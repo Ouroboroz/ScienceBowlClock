@@ -71,6 +71,8 @@ public class Clock {
 		}
 	}
 	public static void resetClock(){
+		stopCountdown();
+		isOverall = false;
 		overallTime[0] = overallTimeStart;
 		overallTime[1] = 0;
 		tossUpTime = tossUpTimeStart;
