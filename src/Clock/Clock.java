@@ -1,4 +1,6 @@
 package Clock;
+import java.awt.Color;
+
 import javax.swing.Timer;
 
 import Executable.ScienceBowlClock;
@@ -34,6 +36,19 @@ public class Clock {
 		overallTime[1] = totSec%60;
 		if(totSec == 0){
 			isOverall = false;
+			soundPlayer.playAudio();
+		}
+	}
+	public static void decreaseHalftime(){
+		int totSec = overallTime[0]*60+overallTime[1];
+		totSec--;
+		overallTime[0] = totSec/60;
+		overallTime[1] = totSec%60;
+		if(totSec == 0){
+			isOverall = false;
+			setMode(ClockCase.OVERALL);
+			ScienceBowlClock.GUI.setOverallPanelColor(new Color(255,255,0));
+			resetClock();
 			soundPlayer.playAudio();
 		}
 	}

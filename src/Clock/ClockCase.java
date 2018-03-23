@@ -1,5 +1,5 @@
 package Clock;
 
 public enum ClockCase {
-	OVERALL, TOSSUP, BONUS
+	OVERALL, TOSSUP, BONUS, HALFTIME
 }

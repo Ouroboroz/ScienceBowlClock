@@ -25,6 +25,9 @@ public class CountdownPerformer implements ActionListener{
 					Clock.decreaseOverall();
 				Clock.decreaseBonus();
 				break;
+			case HALFTIME:
+				Clock.decreaseHalftime();
+				break;
 			}
 			Clock.updateGUI();
 		}
