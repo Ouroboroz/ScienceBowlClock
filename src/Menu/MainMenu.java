@@ -1,11 +1,14 @@
 package Menu;
 
 import java.awt.Color;
+import java.awt.Desktop.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -50,19 +53,23 @@ public class MainMenu extends JMenuBar{
 		bonusTimeM = new JMenu("Bonus Time");
 			startOT = new JMenuItem("Start Overall Time");
 				startOT.addActionListener(menuLis);
+				startOT.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
 			stopOT = new JMenuItem("Stop Overall Time");
 				stopOT.addActionListener(menuLis);
+				stopOT.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));
 			startTT = new JMenuItem("Start Toss Up Time");
 				startTT.addActionListener(menuLis);
+				startTT.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
 			stopTT = new JMenuItem("Stop Toss Up Time");
 				stopTT.addActionListener(menuLis);
 			startBT = new JMenuItem("Start Bonus Time");
 				startBT.addActionListener(menuLis);
+				startBT.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_DOWN_MASK));
 			stopBT = new JMenuItem("Stop Bonus Time");
 				stopBT.addActionListener(menuLis);
 		addTimeM = new JMenuItem("Add Time");
 			addTimeM.addActionListener(menuLis);
-			addTimeM.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, KeyEvent.CTRL_DOWN_MASK));
+			addTimeM.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_EQUALS, KeyEvent.CTRL_DOWN_MASK));
 		subtractTimeM = new JMenuItem("Subtract Time");
 			subtractTimeM.addActionListener(menuLis);
 			subtractTimeM.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK));
@@ -83,6 +90,14 @@ public class MainMenu extends JMenuBar{
 		halftime = new JButton("Start Halftime");
 			halftime.setBackground(new Color(0,126,0));
 			halftime.setOpaque(false);
+			AbstractAction action = new AbstractAction("halftime") {
+				public void actionPerformed(ActionEvent e){
+					halftime.doClick();
+				}
+			};
+			action.putValue(AbstractAction.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK));
+			halftime.getActionMap().put("halftimeAction", action);
+			halftime.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) action.getValue(AbstractAction.ACCELERATOR_KEY), "halftimeAction");
 		halftime.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if("Start Halftime".equals(e.getActionCommand())){
@@ -132,5 +147,8 @@ public class MainMenu extends JMenuBar{
 	}
 	public void changeShowHide(String text){
 		showHide.setText(text);
+	}
+	public void changeHalftimeButtonText(String text){
+		halftime.setText(text);
 	}
 }

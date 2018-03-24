@@ -23,18 +23,37 @@ public class MenuListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String source = e.getActionCommand();
-		if(source.equals("Start Overall Time"))
+		if(source.equals("Start Overall Time")){
+			ScienceBowlClock.GUI.setClick(0, 1);
+			Clock.setIsOverall(true);
 			Clock.startCountdown();
-		else if(source.equals("Stop Overall Time"))
+			if(Clock.getOverallTime()[0] == 0 && Clock.getOverallTime()[1] == 0 && Clock.getTossUpTime() == 5 && Clock.getBonusTime() == 20){
 				Clock.stopCountdown();
-		else if(source.equals("Start Toss Up Time"))
+				Clock.resetClock();
+				Clock.updateGUI();
+			}
+		}
+		else if(source.equals("Stop Overall Time")){
+				ScienceBowlClock.GUI.setClick(0, 0);
+				Clock.setIsOverall(false);
+				Clock.stopCountdown();
+		}
+		else if(source.equals("Start Toss Up Time")){
+				ScienceBowlClock.GUI.setClick(1, 1);
+				Clock.resetBonus();
 				Clock.setMode(ClockCase.TOSSUP);
+		}
 		else if(source.equals("Stop Toss Up Time")){
+				ScienceBowlClock.GUI.setClick(1, 0);
 				Clock.setMode(ClockCase.OVERALL);
 			}
-		else if(source.equals("Start Bonus Time"))
+		else if(source.equals("Start Bonus Time")){
+				ScienceBowlClock.GUI.setClick(2, 1);
+				Clock.resetTossUp();
 				Clock.setMode(ClockCase.BONUS);
+		}
 		else if(source.equals("Stop Bonus Time")){
+			ScienceBowlClock.GUI.setClick(2, 0);
 				Clock.setMode(ClockCase.OVERALL);
 			}
 		else if(source.equals("Reset Overall Time")){

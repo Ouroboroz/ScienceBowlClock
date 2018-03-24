@@ -48,6 +48,7 @@ public class Clock {
 			isOverall = false;
 			setMode(ClockCase.OVERALL);
 			ScienceBowlClock.GUI.setOverallPanelColor(new Color(255,255,0));
+			ScienceBowlClock.GUI.changeHalfTimeButtonText("Start Halftime");
 			resetClock();
 			soundPlayer.playAudio();
 		}
@@ -73,15 +74,20 @@ public class Clock {
 	public static void resetClock(){
 		stopCountdown();
 		isOverall = false;
+		ScienceBowlClock.GUI.setClick(0, 0);
+		ScienceBowlClock.GUI.setClick(1, 0);
+		ScienceBowlClock.GUI.setClick(2, 0);
 		overallTime[0] = overallTimeStart;
 		overallTime[1] = 0;
 		tossUpTime = tossUpTimeStart;
 		bonusTime = bonusTimeStart;
 	}
 	public static void resetTossUp(){
+		ScienceBowlClock.GUI.setClick(1, 0);
 		tossUpTime = tossUpTimeStart;
 	}
 	public static void resetBonus(){
+		ScienceBowlClock.GUI.setClick(2, 0);
 		bonusTime = bonusTimeStart;
 	}
 	public static void incrementTime(int secs, ClockCase mod){

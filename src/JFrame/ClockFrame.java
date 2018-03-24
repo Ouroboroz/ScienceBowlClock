@@ -67,6 +67,11 @@ public class ClockFrame extends JFrame{
 						Clock.stopCountdown();
 						Clock.setIsOverall(false);
 					}
+				if(Clock.getOverallTime()[0] == 0 && Clock.getOverallTime()[1] == 0 && Clock.getTossUpTime() == 5 && Clock.getBonusTime() == 20){
+					Clock.stopCountdown();
+					Clock.resetClock();
+					Clock.updateGUI();
+				}
 				}
 			}
 		});
@@ -84,6 +89,10 @@ public class ClockFrame extends JFrame{
 				if(Clock.getMode() != ClockCase.HALFTIME){
 					if(Clock.isOverall()){
 						incrementClick(1);
+						if(clickCount[2] == 1){
+							incrementClick(2);
+							Clock.resetBonus();
+						}
 						if(clickCount[1] == 1)
 							Clock.setMode(ClockCase.TOSSUP);
 						else{
@@ -108,6 +117,10 @@ public class ClockFrame extends JFrame{
 				if(Clock.getMode() != ClockCase.HALFTIME){
 					if(Clock.isOverall()){
 						incrementClick(2);
+						if(clickCount[1] == 1){
+							incrementClick(1);
+							Clock.resetTossUp();
+						}
 						if(clickCount[2] == 1)
 							Clock.setMode(ClockCase.BONUS);
 						else{
@@ -201,7 +214,14 @@ public class ClockFrame extends JFrame{
 		if(clickCount[type] >= 2)
 			clickCount[type] = 0;
 	}
+	public void setClick(int type, int mode){
+		clickCount[type ] = mode;
+		//mode should be 0 or 1
+	}
 	public void setOverallPanelColor(Color color){
 		overallTimePanel.setBackground(color);
+	}
+	public void changeHalfTimeButtonText(String text){
+		mainMenu.changeHalftimeButtonText(text);
 	}
 }

@@ -5,12 +5,17 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
+
 import Clock.Clock;
 import Clock.ClockCase;
 public class SubtractTimeFrame extends JFrame {
@@ -42,6 +47,14 @@ public class SubtractTimeFrame extends JFrame {
 				dispose();
 			}
 		});
+		AbstractAction action = new AbstractAction("Submit"){
+			public void actionPerformed(ActionEvent e){
+				submit.doClick();
+			}
+		};
+		action.putValue(AbstractAction.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0));
+		submit.getActionMap().put("submitAction", action);
+		submit.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) action.getValue(AbstractAction.ACCELERATOR_KEY), "submitAction");
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
 		c.weighty = 0.6;
