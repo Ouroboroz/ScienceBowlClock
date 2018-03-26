@@ -94,14 +94,18 @@ public class Clock {
 		int totSecs = overallTime[0]*60+overallTime[1];
 		switch(mod){
 			case OVERALL:
+				if(totSecs + secs > 0){
 					totSecs += secs;
 					overallTime[0] = totSecs/60;
 					overallTime[1] = totSecs%60;
+				}
 				break;
 			case TOSSUP:
+				if(tossUpTime + secs > 0)
 					tossUpTime += secs;
 				break;
 			case BONUS:
+				if(bonusTime + secs > 0)
 					bonusTime += secs;
 				break;
 		}

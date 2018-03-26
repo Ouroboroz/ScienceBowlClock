@@ -1,3 +1,0 @@
-#!/bin/bash
-cd $(dirname $0)/bin
-java -cp .:../Resources/External\ Jars/sqlite-jdbc-3.16.1.jar Executable.ScienceBowlClock
