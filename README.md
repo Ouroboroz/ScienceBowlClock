@@ -13,5 +13,5 @@ A countdown timer for Science Bowl.
 
 ### Running the app:
 * Have Java installed on the computer
-* Download ScienceBowlClock.zip
+* Download ScienceBowlClock.jar
 * Follow README in the zip
