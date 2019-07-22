@@ -18,14 +18,18 @@ import javax.swing.KeyStroke;
 
 import Clock.Clock;
 import Clock.ClockCase;
-public class AddTimeFrame extends JFrame {
+
+public class AddTimeFrame extends JFrame 
+{
 	private JLabel addTime;
 	private JTextField inputTime;
 	private JButton submit;
 	private JComboBox<ClockCase> dropDown;
 	private	ClockCase[] dropDownChoices = {ClockCase.OVERALL, ClockCase.TOSSUP, ClockCase.BONUS};
 	GridBagConstraints c;
-	public AddTimeFrame(){
+	
+	public AddTimeFrame()
+	{
 		setTitle("Add Time");
 		setSize(300,200);
 		setMaximumSize(new Dimension(300,200));
@@ -38,20 +42,29 @@ public class AddTimeFrame extends JFrame {
 		inputTime = new JTextField(20);
 		dropDown = new JComboBox<ClockCase>(dropDownChoices);
 		dropDown.setSelectedIndex(0);
-		submit.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent evt){
-				try{
+		
+		submit.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				try
+				{
 					Clock.incrementTime(Integer.parseInt(inputTime.getText()), dropDownChoices[dropDown.getSelectedIndex()]);
-				}catch(Exception e){}
+				}
+				catch(Exception e){}
 				Clock.updateGUI();
 				dispose();
 			}
-		});
-		AbstractAction action = new AbstractAction("Submit"){
+		}
+		);
+		
+		AbstractAction action = new AbstractAction("Submit")
+		{
 			public void actionPerformed(ActionEvent e){
 				submit.doClick();
 			}
 		};
+		
 		action.putValue(AbstractAction.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0));
 		submit.getActionMap().put("submitAction", action);
 		submit.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) action.getValue(AbstractAction.ACCELERATOR_KEY), "submitAction");

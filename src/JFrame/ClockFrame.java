@@ -27,7 +27,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import Menu.MainMenu;
 
-public class ClockFrame extends JFrame{
+public class ClockFrame extends JFrame
+{
 	MainMenu mainMenu;
 	JLabel overallTime, tossUpTime, bonusTime;
 	String overallTimes, tossUpTimes, bonusTimes;
@@ -36,6 +37,7 @@ public class ClockFrame extends JFrame{
 	JButton showScore;
 	GridBagConstraints c;
 	int[] clickCount = {0,0,0};
+	
 	public ClockFrame(){
 		//Creates name and frame settings
 		setTitle("Science Bowl Clock");
@@ -43,9 +45,11 @@ public class ClockFrame extends JFrame{
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		//Sets up initial Click Counter
+		
 		//Sets up the menu and adds it on 
 		mainMenu = new MainMenu();
 		setJMenuBar(mainMenu);
+		
 		//Creates the panel for the overall time
 		overallTime = new JLabel();
 		overallTimes = "08:00";
@@ -54,27 +58,37 @@ public class ClockFrame extends JFrame{
 		overallTimePanel.setLayout(new GridBagLayout());
 		overallTimePanel.add(overallTime);
 		overallTimePanel.setBackground(new Color(255,255,0));
-		overallTimePanel.addMouseListener(new MouseAdapter() {
+		
+		overallTimePanel.addMouseListener(new MouseAdapter() 
+		{
 			@Override
-			public void mouseClicked(MouseEvent e){
-				if(Clock.getMode() != ClockCase.HALFTIME){
+			public void mouseClicked(MouseEvent e)
+			{
+				if(Clock.getMode() != ClockCase.HALFTIME)
+				{
 					incrementClick(0);
-					if(clickCount[0] == 1){
+					if(clickCount[0] == 1)
+					{
 						Clock.startCountdown();
 						Clock.setIsOverall(true);
 					}
-					else{
+					
+					else
+					{
 						Clock.stopCountdown();
 						Clock.setIsOverall(false);
 					}
-				if(Clock.getOverallTime()[0] == 0 && Clock.getOverallTime()[1] == 0 && Clock.getTossUpTime() == 5 && Clock.getBonusTime() == 20){
+				if(Clock.getOverallTime()[0] == 0 && Clock.getOverallTime()[1] == 0 && Clock.getTossUpTime() == 5 && Clock.getBonusTime() == 20)
+				{
 					Clock.stopCountdown();
 					Clock.resetClock();
 					Clock.updateGUI();
 				}
 				}
 			}
-		});
+		}
+		);
+		
 		//Creates the panel for the toss up
 		tossUpTime = new JLabel();
 		tossUpTimes = "05";
@@ -83,26 +97,36 @@ public class ClockFrame extends JFrame{
 		tossUpTimePanel.setLayout(new GridBagLayout());
 		tossUpTimePanel.add(tossUpTime);
 		tossUpTimePanel.setBackground(new Color(255,0,0));
-		tossUpTimePanel.addMouseListener(new MouseAdapter() {
+		tossUpTimePanel.addMouseListener(new MouseAdapter() 
+		{
 			@Override
-			public void mouseClicked(MouseEvent e){
-				if(Clock.getMode() != ClockCase.HALFTIME){
-					if(Clock.isOverall()){
+			public void mouseClicked(MouseEvent e)
+			{
+				if(Clock.getMode() != ClockCase.HALFTIME)
+				{
+					if(Clock.isOverall())
+					{
 						incrementClick(1);
-						if(clickCount[2] == 1){
+						
+						if(clickCount[2] == 1)
+						{
 							incrementClick(2);
 							Clock.resetBonus();
 						}
+						
 						if(clickCount[1] == 1)
 							Clock.setMode(ClockCase.TOSSUP);
-						else{
+						else
+						{
 							Clock.setMode(ClockCase.OVERALL);
 							Clock.resetTossUp();
 						}
 					}
 				}
 			}
-		});
+		}
+		);
+		
 		//Creates the panel for the bonus
 		bonusTime = new JLabel();
 		bonusTimes = "20";
@@ -111,16 +135,22 @@ public class ClockFrame extends JFrame{
 		bonusTimePanel.setLayout(new GridBagLayout());
 		bonusTimePanel.add(bonusTime);
 		bonusTimePanel.setBackground(new Color(0,0,255));
-		bonusTimePanel.addMouseListener(new MouseAdapter() {
+		bonusTimePanel.addMouseListener(new MouseAdapter() 
+		{
 			@Override
-			public void mouseClicked(MouseEvent e){
-				if(Clock.getMode() != ClockCase.HALFTIME){
-					if(Clock.isOverall()){
+			public void mouseClicked(MouseEvent e)
+			{
+				if(Clock.getMode() != ClockCase.HALFTIME)
+				{
+					if(Clock.isOverall())
+					{
 						incrementClick(2);
-						if(clickCount[1] == 1){
+						if(clickCount[1] == 1)
+						{
 							incrementClick(1);
 							Clock.resetTossUp();
 						}
+						
 						if(clickCount[2] == 1)
 							Clock.setMode(ClockCase.BONUS);
 						else{
@@ -130,25 +160,37 @@ public class ClockFrame extends JFrame{
 					}
 				}
 			}
-		});
+		}
+		);
+		
 		//Sets up fonts
 		overallTime.setFont(new Font("SansSerif",Font.PLAIN,100));
 		tossUpTime.setFont(new Font("SansSerif",Font.PLAIN,50));
 		bonusTime.setFont(new Font("SansSerif",Font.PLAIN,50));
 		//Sets up the scoreboard button
 		showScore = new JButton("Show Scoreboard");
-		showScore.addActionListener(new ActionListener() { 
-			  public void actionPerformed(ActionEvent e) { 
-				  if(e.getActionCommand().equals("Show Scoreboard")){
+		
+		showScore.addActionListener(new ActionListener() 
+		{ 
+			  public void actionPerformed(ActionEvent e) 
+			  { 
+				  if(e.getActionCommand().equals("Show Scoreboard"))
+				  {
 						ScienceBowlClock.ScoreGUI.setVisible(true);
 						isShowScoreButton(false);
 					}
-					else if(e.getActionCommand().equals("Hide Scoreboard")){
+					
+					else if(e.getActionCommand().equals("Hide Scoreboard"))
+					{
 						ScienceBowlClock.ScoreGUI.setVisible(false);
 						isShowScoreButton(true);
 					}
 				  } 
-				} );
+			} 
+		
+		}
+		);
+		
 		//Sets the layout version of the frame
 				clockPanel = new JPanel();
 				clockGrid = new GroupLayout(clockPanel);
@@ -184,7 +226,9 @@ public class ClockFrame extends JFrame{
 		c.weightx = 0.2;
 		add(showScore, c);
 	}
-	public void updateTimes(int[] timeO, int timeT, int timeB){
+	
+	public void updateTimes(int[] timeO, int timeT, int timeB)
+	{
 		int minute, second, tossUp, bonus;
 		minute = timeO[0];
 		second = timeO[1];
@@ -197,7 +241,9 @@ public class ClockFrame extends JFrame{
 		tossUpTime.setText(tossUpTimes);
 		bonusTime.setText(bonusTimes);
 	}
-	public void isShowScoreButton(boolean isShow){
+	
+	public void isShowScoreButton(boolean isShow)
+	{
 		if(isShow){
 			showScore.setActionCommand("Show Scoreboard");
 			showScore.setText("Show Scoreboard");
@@ -209,19 +255,27 @@ public class ClockFrame extends JFrame{
 			mainMenu.changeShowHide("Hide Scoreboard");
 		}
 	}
-	public void incrementClick(int type){
+	
+	public void incrementClick(int type)
+	{
 		clickCount[type]++;
 		if(clickCount[type] >= 2)
 			clickCount[type] = 0;
 	}
-	public void setClick(int type, int mode){
+	
+	public void setClick(int type, int mode)
+	{
 		clickCount[type ] = mode;
 		//mode should be 0 or 1
 	}
-	public void setOverallPanelColor(Color color){
+	
+	public void setOverallPanelColor(Color color)
+	{
 		overallTimePanel.setBackground(color);
 	}
-	public void changeHalfTimeButtonText(String text){
+	
+	public void changeHalfTimeButtonText(String text)
+	{
 		mainMenu.changeHalftimeButtonText(text);
 	}
 }

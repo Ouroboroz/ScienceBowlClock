@@ -6,7 +6,8 @@ import javax.swing.Timer;
 import Executable.ScienceBowlClock;
 import Sound.SoundPlayer;
 
-public class Clock {
+public class Clock 
+{
 	private static Timer timer = new Timer(1000, new CountdownPerformer());
 	private static final int overallTimeStart = 8, tossUpTimeStart = 5, bonusTimeStart = 20;
 	private static boolean isOverall = false;
@@ -14,22 +15,34 @@ public class Clock {
 	private static int tossUpTime = 5, bonusTime = 20; //8, 20
 	private static ClockCase mode = ClockCase.OVERALL;
 	private static SoundPlayer soundPlayer = new SoundPlayer();
-	public Clock(){
+	
+	public Clock()
+	{
 		mode = ClockCase.OVERALL;
 	}
-	public static void updateGUI(){
+	
+	public static void updateGUI()
+	{
 		ScienceBowlClock.GUI.updateTimes(overallTime, tossUpTime, bonusTime);
 	}
-	public static void setMode(ClockCase mod){
+	
+	public static void setMode(ClockCase mod)
+	{
 		mode = mod;
 	}
-	public static void startCountdown(){
+	
+	public static void startCountdown()
+	{
 		timer.start();
 	}
-	public static void stopCountdown(){
+	
+	public static void stopCountdown()
+	{
 		timer.stop();
 	}
-	public static void decreaseOverall(){
+	
+	public static void decreaseOverall()
+	{
 		int totSec = overallTime[0]*60+overallTime[1];
 		totSec--;
 		overallTime[0] = totSec/60;
@@ -39,7 +52,9 @@ public class Clock {
 			soundPlayer.playAudio();
 		}
 	}
-	public static void decreaseHalftime(){
+	
+	public static void decreaseHalftime()
+	{
 		int totSec = overallTime[0]*60+overallTime[1];
 		totSec--;
 		overallTime[0] = totSec/60;
@@ -53,7 +68,9 @@ public class Clock {
 			soundPlayer.playAudio();
 		}
 	}
-	public static void decreaseTossUp(){
+	
+	public static void decreaseTossUp()
+	{
 		tossUpTime--;
 		if(tossUpTime == 0){
 			mode = ClockCase.OVERALL;
@@ -62,7 +79,9 @@ public class Clock {
 			ScienceBowlClock.GUI.incrementClick(1);
 		}
 	}
-	public static void decreaseBonus(){
+	
+	public static void decreaseBonus()
+	{
 		bonusTime--;
 		if(bonusTime == 0){
 			mode = ClockCase.OVERALL;
@@ -71,7 +90,9 @@ public class Clock {
 			ScienceBowlClock.GUI.incrementClick(2);
 		}
 	}
-	public static void resetClock(){
+	
+	public static void resetClock()
+	{
 		stopCountdown();
 		isOverall = false;
 		ScienceBowlClock.GUI.setClick(0, 0);
@@ -82,15 +103,21 @@ public class Clock {
 		tossUpTime = tossUpTimeStart;
 		bonusTime = bonusTimeStart;
 	}
-	public static void resetTossUp(){
+	
+	public static void resetTossUp()
+	{
 		ScienceBowlClock.GUI.setClick(1, 0);
 		tossUpTime = tossUpTimeStart;
 	}
-	public static void resetBonus(){
+	
+	public static void resetBonus()
+	{
 		ScienceBowlClock.GUI.setClick(2, 0);
 		bonusTime = bonusTimeStart;
 	}
-	public static void incrementTime(int secs, ClockCase mod){
+	
+	public static void incrementTime(int secs, ClockCase mod)
+	{
 		int totSecs = overallTime[0]*60+overallTime[1];
 		switch(mod){
 			case OVERALL:
@@ -110,25 +137,37 @@ public class Clock {
 				break;
 		}
 	}
+	
 	//Setters
-	public static boolean setIsOverall(boolean isTrue){
+	public static boolean setIsOverall(boolean isTrue)
+	{
 		isOverall = isTrue;
 		return isOverall;
 	}
+	
 	//Getters
-	public static int[] getOverallTime(){
+	public static int[] getOverallTime()
+	{
 		return overallTime;
 	}
-	public static int getTossUpTime(){
+	
+	public static int getTossUpTime()
+	{
 		return tossUpTime;
 	}
-	public static int getBonusTime(){
+	
+	public static int getBonusTime()
+	{
 		return bonusTime;
 	}
-	public static ClockCase getMode(){
+	
+	public static ClockCase getMode()
+	{
 		return mode;
 	}
-	public static boolean isOverall(){
+	
+	public static boolean isOverall()
+	{
 		return isOverall;
 	}
 }

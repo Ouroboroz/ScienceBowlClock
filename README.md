@@ -10,7 +10,8 @@ A countdown timer for Science Bowl.
 ### Download:
 * [Latest Release: Version 1.0](https://github.com/Ouroboroz/ScienceBowlClock/releases/tag/1.0)
 * [All Releases](https://github.com/Ouroboroz/ScienceBowlClock/releases)
+
 ### Running the app:
 * Have Java installed on the computer
-* Download ScienceBowlClock.zip
+* Download ScienceBowlClock.jar
 * Follow README in the zip
