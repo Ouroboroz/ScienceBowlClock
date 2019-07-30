@@ -23,20 +23,17 @@ public class CSVWriter
 		{
 			if(new File(path+"/scibowldata").exists())
 			{
-				//System.out.println(path+"/scibowldata/scibowldata"+modif+".csv");
 				fileWriter = new FileWriter(path+"/scibowldata/scibowldata"+modif+".csv");
 				path += "scibowldata/scibowldata"+modif+".csv";
 			}
 			else
 			{
-				//System.out.println(path+"/scibowldata"+modif+".csv");
 				fileWriter = new FileWriter(path+"/scibowldata"+modif+".csv");
 				path += "scibowldata"+modif+".csv";
 			}
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			System.out.println("Unable to create CSV file");
 			e.printStackTrace();
 		}
